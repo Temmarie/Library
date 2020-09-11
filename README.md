@@ -5,6 +5,8 @@
 - Html,
 - CSS,
 - JavaScript
+- Bootstrap
+- Vscode
 - Eslint
 
 ## Live Demo
