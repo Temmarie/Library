@@ -4,6 +4,7 @@ class Book {
     this.title = title;
     this.author = author;
     this.pages = pages;
+    this.read = read;
   }
 }
 
@@ -18,16 +19,29 @@ class UI {
   static addBookToList(book) {
     const list = document.querySelector('#book-list');
     const row = document.createElement('tr');
-  
+    book.read = document.getElementById('read').checked;
 
     row.innerHTML = `
       <td>${book.title}</td>
       <td>${book.author}</td>
       <td>${book.pages}</td>
+      <td> <button class="btn btn-info" id="status"> ${book.read} </button></td>
       <td><a href="#" class="btn btn-danger btn-sm delete">Delete</a></td>
     `;
 
     list.appendChild(row);
+    document.querySelector('body').addEventListener('click', (e) => {
+      if (e.target.id === 'status') {
+        e.preventDefault();
+        if (book.read === false) {
+          book.read = true;
+          e.target.innerHTML = 'true';
+        } else {
+          book.read = false;
+          e.target.innerHTML = 'false';
+        }
+      }
+    });
   }
 
   static deleteBook(el) {
@@ -52,6 +66,7 @@ class UI {
     document.querySelector('#title').value = '';
     document.querySelector('#author').value = '';
     document.querySelector('#pages').value = '';
+    document.querySelector('#read').checked = false;
   }
 }
 
@@ -99,13 +114,14 @@ document.querySelector('#book-form').addEventListener('submit', (e) => {
   const title = document.querySelector('#title').value;
   const author = document.querySelector('#author').value;
   const pages = document.querySelector('#pages').value;
+  const read = document.querySelector('#read').value;
 
   // Validate
   if(title === '' || author === '' || pages === '') {
     UI.showAlert('Please fill in all fields', 'danger');
   } else {
     // Instatiate book
-    const book = new Book(title, author, pages);
+    const book = new Book(title, author, pages,read);
 
     // Add Book to UI
     UI.addBookToList(book);
