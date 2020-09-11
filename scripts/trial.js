@@ -4,6 +4,7 @@ class Book {
     this.title = title;
     this.author = author;
     this.pages = pages;
+    this.read = read;
   }
 }
 
@@ -17,18 +18,37 @@ class UI {
 
   static addBookToList(book) {
     const list = document.querySelector('#book-list');
+
     const row = document.createElement('tr');
-  
+    book.read = document.getElementById('checkbox').checked;
+    const state = book.read === true ? 'Yes I have' : 'No I have not';
 
     row.innerHTML = `
       <td>${book.title}</td>
       <td>${book.author}</td>
       <td>${book.pages}</td>
+      <td><button class="state-btn" id="status">${state}</button></td>
       <td><a href="#" class="btn btn-danger btn-sm delete">Delete</a></td>
     `;
 
     list.appendChild(row);
+
+    document.querySelector('body').addEventListener('click', (e) => {
+      if (e.target.id === 'status') {
+        e.preventDefault();
+        if (book.read === false) {
+          book.read = true;
+          e.target.innerHTML = 'Yes I have';
+        } else {
+          book.read = false;
+          e.target.innerHTML = 'No I have not';
+        }
+      }
+    });
   }
+
+
+
 
   static deleteBook(el) {
     if(el.classList.contains('delete')) {
@@ -52,6 +72,7 @@ class UI {
     document.querySelector('#title').value = '';
     document.querySelector('#author').value = '';
     document.querySelector('#pages').value = '';
+    document.querySelector('#checkbox').checked = false;
   }
 }
 
@@ -99,13 +120,14 @@ document.querySelector('#book-form').addEventListener('submit', (e) => {
   const title = document.querySelector('#title').value;
   const author = document.querySelector('#author').value;
   const pages = document.querySelector('#pages').value;
+  const read = document.querySelector('#checkbox').value;
 
   // Validate
   if(title === '' || author === '' || pages === '') {
     UI.showAlert('Please fill in all fields', 'danger');
   } else {
     // Instatiate book
-    const book = new Book(title, author, pages);
+    const book = new Book(title, author, pages, read);
 
     // Add Book to UI
     UI.addBookToList(book);
@@ -127,7 +149,7 @@ document.querySelector('#book-list').addEventListener('click', (e) => {
   UI.deleteBook(e.target);
 
   // Remove book from store
-  Store.removeBook(e.target.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.textContent);
+  Store.removeBook(e.target.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.textContent);
 
   // Show success message
   UI.showAlert('Book Removed', 'success');
