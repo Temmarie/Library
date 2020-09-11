@@ -1,5 +1,7 @@
-# Library App
+![image](https://github.com/Temmarie/Library/blob/feature/images/Screenshot.png)
 
+# Library App
+Library -- [Librarian] This project is part of the Microverse curriculum in Javascript module!
 ## Built With
 
 - Html,
@@ -9,9 +11,7 @@
 - Vscode
 - Eslint
 
-## Live Demo
 
-[Live Demo Link](https://raw.githack.com/Temmarie/Mint_form_clone/feature-1/index.html)
 
 ### Setup
 
