@@ -1,17 +1,17 @@
 // Book Class: Represents a Book
-class Book {
+class Book { //eslint-disable-line
   constructor(title, author, pages) {
     this.title = title;
     this.author = author;
     this.pages = pages;
-    this.read = read;
+    this.read = read; //eslint-disable-line
   }
 }
 
 // UI Class: Handle UI Tasks
 class UI {
   static displayBooks() {
-    const books = Store.getBooks();
+    const books = Store.getBooks(); //eslint-disable-line
 
     books.forEach((book) => UI.addBookToList(book));
   }
@@ -143,7 +143,7 @@ document.querySelector('#book-list').addEventListener('click', (e) => {
   UI.deleteBook(e.target);
 
   // Remove book from store
-  Store.removeBook(e.target.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.textContent);
+  Store.removeBook(e.target.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.textContent); //eslint-disable-line
 
   // Show success message
   UI.showAlert('Book Removed', 'success');
