@@ -1,7 +1,5 @@
 # Library App
 
-# Library App
-
 ## Built With
 
 - Html,
