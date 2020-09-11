@@ -1,0 +1,22 @@
+{
+  "name": "library",
+  "version": "1.0.0",
+  "description": "![image](https://github.com/Temmarie/Library/blob/feature/images/Screenshot.png)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Temmarie/Library.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Temmarie/Library/issues"
+  },
+  "homepage": "https://github.com/Temmarie/Library#readme",
+  "devDependencies": {
+    "eslint-plugin-import": "^2.22.0"
+  }
+}

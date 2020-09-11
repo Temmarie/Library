@@ -45,7 +45,7 @@ class UI {
   }
 
   static deleteBook(el) {
-    if(el.classList.contains('delete')) {
+    if (el.classList.contains('delete')) {
       el.parentElement.parentElement.remove();
     }
   }
@@ -74,7 +74,7 @@ class UI {
 class Store {
   static getBooks() {
     let books;
-    if(localStorage.getItem('books') === null) {
+    if (localStorage.getItem('books') === null) {
       books = [];
     } else {
       books = JSON.parse(localStorage.getItem('books'));
@@ -93,7 +93,7 @@ class Store {
     const books = Store.getBooks();
 
     books.forEach((book, index) => {
-      if(book.title === title) {
+      if (book.title === title) {
         books.splice(index, 1);
       }
     });
@@ -117,11 +117,11 @@ document.querySelector('#book-form').addEventListener('submit', (e) => {
   const read = document.querySelector('#read').value;
 
   // Validate
-  if(title === '' || author === '' || pages === '') {
+  if (title === '' || author === '' || pages === '') {
     UI.showAlert('Please fill in all fields', 'danger');
   } else {
     // Instatiate book
-    const book = new Book(title, author, pages,read);
+    const book = new Book(title, author, pages, read);
 
     // Add Book to UI
     UI.addBookToList(book);
