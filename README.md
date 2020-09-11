@@ -10,9 +10,10 @@
 ## Live Demo
 
 [Live Demo Link](https://raw.githack.com/Temmarie/Mint_form_clone/feature-1/index.html)
+
 ### Setup
 
-To test the BooksApp locally, you will need to clone the repository, navigate to it's containing directory, and run the following commands:
+To test the Library locally, you will need to clone the repository, navigate to it's containing directory, and run the following commands:
 
 
 
